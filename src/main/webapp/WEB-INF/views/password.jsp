@@ -30,7 +30,7 @@
 							<hr/>
 						</div>
 						
-						<form id="form_password" action="password-user">
+						<form id="form_password" action="password-user" method="post">
 							
 							<div class="mb-3">
 								<label>Informe seu email de acesso:</label>

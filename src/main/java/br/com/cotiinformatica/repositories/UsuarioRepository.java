@@ -26,6 +26,22 @@ public class UsuarioRepository {
 		// fechando a conexão com o banco de dados
 		connection.close();
 	}
+	
+	// método para atualizar a senha de um usuário
+	public void update(Integer idUsuario, String novaSenha) throws Exception {
+		
+		// abrindo conexão com o banco de dados
+		Connection connection = ConnectionFactory.createConnection();
+		
+		// executando um comando UPDATE no banco de dados
+		PreparedStatement statement = connection
+				.prepareStatement("update usuario set senha = md5(?) where idusuario = ?");
+		statement.setString(1, novaSenha);
+		statement.setInt(2, idUsuario);
+		statement.execute();
+		
+		connection.close();
+	}	
 
 	// método para consultar 1 usuário no banco de dados através do email
 	public Usuario findByEmail(String email) throws Exception {
